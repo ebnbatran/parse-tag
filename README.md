@@ -24,3 +24,7 @@ After building, CMake will make an executable named *tests* inside a folder with
 Run *tests* executable from your terminal.
 
 It will run all Google Tests of the project and indicate if there are failures with their reasons.
+
+**Note**: Unit tests depend on samples of media to be present in the top level folder,
+so you need to replace the file names in *tests/tests.cpp* source file in order for the tests to work
+properly.
