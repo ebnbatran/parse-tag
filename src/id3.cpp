@@ -34,7 +34,7 @@ namespace ParseTag {
             frame.preservedIfTagAltered = false;
         }
         if ((frame.flags[0] & 0x40) == 0x40) { // bit 6 is set
-            frame.preservedIfTagAltered = false;
+            frame.preservedIfFileAltered = false;
         }
         if ((frame.flags[0] & 0x20) == 0x20) { // bit 5 is set
             frame.readOnly = true;
