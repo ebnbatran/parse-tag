@@ -31,9 +31,13 @@
 *.out
 *.app
 
+# Notes
+Notes.md
+
 # Folders
 build
 .vscode
 
 # sample files
 akon-right-now.mp3
+miley-cyrus-the-climb.mp3

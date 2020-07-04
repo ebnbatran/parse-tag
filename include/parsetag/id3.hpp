@@ -1,9 +1,46 @@
 #include <string>
 #include <vector>
+#include <variant>
 
 namespace ParseTag {
 
     class ID3 {
+    public:
+        /**
+         * A struct for the parsed frame information.
+         */
+        struct Frame {
+            /**
+             * Header information.
+             */
+            std::string id;
+            unsigned int size;
+            unsigned char flags[2];
+
+            /**
+             * Flags.
+             */
+            bool preservedIfTagAltered = true;
+            bool preservedIfFileAltered = true;
+            bool readOnly;
+            bool compressed;
+            bool encrypted;
+            bool containsGroupingInfo;
+
+            /**
+             * Text encoding.
+             */
+            bool isISO;
+            bool isUnicode;
+
+            /**
+             * Frame information, which might be a text string or an integer.
+             */
+            std::variant<std::string, int> info;
+            std::string ownerIdentifier;
+            std::string identifier;
+        };
+
     public:
         ID3();
         ~ID3() = default;
@@ -79,24 +116,12 @@ namespace ParseTag {
         unsigned int size;
 
         /**
-         * The song title.
+         * Tag frames.
          */
-        std::string title;
-
-        /**
-         * The song album.
-         */
-        std::string album;
-
-        /**
-         * The song artist.
-         */
-        std::string artist;
-
-        /**
-         * The song year.
-         */
-        int year;
+        Frame title;
+        Frame album;
+        Frame artist;
+        Frame year;
 
     private:
         /**
@@ -111,6 +136,6 @@ namespace ParseTag {
          * @return
          *     The text information inside the frame.
          */
-        std::string parseFrame(const std::string& frameID, const std::string& data);
+        Frame parseFrame(const std::string& frameID, const std::string& data);
     };
 };
