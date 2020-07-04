@@ -69,16 +69,16 @@ namespace ParseTag {
         version[1] = (unsigned short)data[1];
         data = data.substr(2);
         char flags = data[0];
-        if (flags & 0x80 == 0x80) { // bit 7 is set
+        if ((flags & 0x80) == 0x80) { // bit 7 is set
             isSynchronized = true;
         }
-        if (flags & 0x40 == 0x40) { // bit 6 is set
+        if ((flags & 0x40) == 0x40) { // bit 6 is set
             hasExtendedHeader = true;
         }
-        if (flags & 0x20 == 0x20) { // bit 5 is set
+        if ((flags & 0x20) == 0x20) { // bit 5 is set
             isExperimental = true;
         }
-        if (flags & 0x10 == 0x10) { // bit 4 is set
+        if ((flags & 0x10) == 0x10) { // bit 4 is set
             hasFooter = true;
         }
         data = data.substr(1);
