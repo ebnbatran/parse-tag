@@ -116,11 +116,20 @@ namespace ParseTag {
         unsigned int size;
 
         /**
-         * Tag frames.
+         * @brief The title frame
          */
         Frame title;
+        /**
+         * @brief The album frame
+         */
         Frame album;
+        /**
+         * @brief The artist frame
+         */
         Frame artist;
+        /**
+         * @brief The year frame
+         */
         Frame year;
 
     private:
